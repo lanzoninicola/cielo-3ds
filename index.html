@@ -1,0 +1,306 @@
+<html>
+  <head>
+    <title>Sample</title>
+    <script type="text/javascript">
+      function writeLog(text) {
+        const responseTag = document.getElementById("response");
+
+        responseTag.textContent = text;
+      }
+
+      function sendOrder() {
+        console.log("############### sending order");
+
+        writeLog("Sending order...");
+
+        bpmpi_authenticate();
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <div style="background-color: aliceblue; margin-bottom: 1.5rem">
+        <h2>Sample HTML</h2>
+
+        <a
+          href="https://github.com/DeveloperCielo/developercielo.github.io/blob/docs/_i18n/pt/_posts/3ds/exemplo.html"
+          target="_blank"
+        >
+          Sample HTML from Cielo
+        </a>
+      </div>
+
+      <div style="flex-direction: column; gap: 1rem">
+        <input
+          name="accessToken"
+          class="bpmpi_accesstoken"
+          style="background-color: yellow"
+          value="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImJWS0RGb1dIRTVha0szeXNqSjJScGpxZFZlRSJ9.eyJjbGllbnRfbmFtZSI6IlFBXzNEU19BdXRoZW50aWNhdG9yIiwiY2xpZW50X2lkIjoiZGJhM2E4ZGItZmE1NC00MGUwLThiYWItN2JmYjliNmYyZTJlIiwic2NvcGVzIjoie1wiU2NvcGVcIjpcIkJyYXNwYWczRFNBdXRoZW50aWNhdG9yXCIsXCJDbGFpbXNcIjpbe1wiTmFtZVwiOlwiTWVyY2hhbnROYW1lXCIsXCJWYWx1ZXNcIjpbXCJMb2phIEV4ZW1wbG8gTHRkYVwiXX0se1wiTmFtZVwiOlwiRXN0YWJsaXNobWVudENvZGVcIixcIlZhbHVlc1wiOltcIjEwMDY5OTMwNjlcIl19LHtcIk5hbWVcIjpcIk1DQ1wiLFwiVmFsdWVzXCI6W1wiNTkxMlwiXX0se1wiTmFtZVwiOlwiUmVmZXJlbmNlSWRcIixcIlZhbHVlc1wiOltcIjRiOTY0MDQzLTFjYTQtNGVlZi1iOWNkLWUwMGRmYmU0M2UxOVwiXX1dfSIsImlzcyI6Imh0dHBzOi8vYXV0aHNhbmRib3guYnJhc3BhZy5jb20uYnIiLCJhdWQiOiJVVlF4Y1VBMmNTSjFma1EzSVVFbk9pSTNkbTl0Zm1sNWVsQjVKVVV1UVdnPSIsImV4cCI6MTcxNjM4NDg3NCwibmJmIjoxNzE2Mjk4NDc0fQ.G5ikOo_rzKLvdVzkVx8Jg6ZEb7IUl2AyVShIvCDeAis0I2ez7z9yoClPABYzzjGP1P3QTJ_ofcItOMVO7bjzhxboNQD9RuMcaLakIDAP9qI2MiBT33sZF_MP7hrbdbyyRm1Jt_w_RzMtYakuj-WktlulglSg2asnNVsoLlm35zcoxvbAJILdrNUOkpFE4wx4-RDobM09AhTighnfrAHLnpEHKuFyvWRZRXyEZECuOK4WnW30n60e_o5flFrjR8-m91I83t2xwfa1l8CCyDk4VAO1HTZ9_tzyDX_fvidoYw-N8GmEHLSojama88aR9Jz6EohtgUTaxJDUAr8RWIlnUw"
+        />
+        <div style="margin-bottom: 3rem">
+          <input
+            type="button"
+            onclick="sendOrder()"
+            style="font-size: 32px; background-color: yellow"
+            value="Send Order"
+            id="btnSendOrder"
+          />
+
+          <div
+            style="
+              background-color: beige;
+              margin-block: 1rem;
+              padding: 1rem;
+              border-radius: 10px;
+              font-weight: bold;
+              font-size: 110%;
+              width: max-content;
+            "
+          >
+            <div style="flex-direction: row; gap: 1rem">
+              <span>Response:</span>
+              <p id="response"></p>
+            </div>
+          </div>
+        </div>
+
+        <input
+          type="hidden"
+          name="authEnabled"
+          class="bpmpi_auth"
+          value="true"
+        />
+        <input
+          type="hidden"
+          name="authEnabledNotifyonly"
+          class="bpmpi_auth_notifyonly"
+          value="true"
+        />
+
+        <label>Order Number:</label>
+        <input
+          type="text"
+          size="50"
+          name="orderNumber"
+          class="bpmpi_ordernumber"
+          value="123456"
+        />
+      </div>
+      <div>
+        <label>Currency:</label>
+        <select name="currency" class="bpmpi_currency">
+          <option value="986" selected="selected">BRL</option>
+          <option value="840">USD</option>
+          <option value="032">ARS</option>
+        </select>
+      </div>
+      <div>
+        <label>Amount:</label>
+        <input
+          type="text"
+          size="50"
+          name="amount"
+          class="bpmpi_totalamount"
+          value="1000"
+        />
+      </div>
+
+      <div style="margin-block: 3rem; background-color: ghostwhite">
+        <div style="margin-block: 1rem">
+          <h2 style="font-weight: bold; margin-block: 0.5rem">
+            Dados do cartao
+          </h2>
+
+          <a
+            href="https://developercielo.github.io/manual/3ds#cart%C3%B5es-de-teste:~:text=Cart%C3%B5es%20de%20teste,suporta%20a%20autentica%C3%A7%C3%A3o."
+            target="_blank"
+          >
+            Cartao de teste Cielo (Documentacao)
+          </a>
+        </div>
+
+        <div>
+          <label>Payment Method:</label>
+          <select name="paymentMethod" class="bpmpi_paymentmethod">
+            <option value="credit" selected="selected">Credit</option>
+            <option value="debit">Debit</option>
+          </select>
+        </div>
+        <div>
+          <label>Card Number:</label>
+          <input
+            type="text"
+            size="50"
+            name="cardNumber"
+            class="bpmpi_cardnumber"
+            value="4000000000001091"
+          />
+        </div>
+        <div>
+          <label>Expiration date:</label>
+          <input
+            type="text"
+            size="50"
+            name="expMonth"
+            class="bpmpi_cardexpirationmonth"
+            value="01"
+          />
+          <input
+            type="text"
+            size="50"
+            name="expYear"
+            class="bpmpi_cardexpirationyear"
+            value="2030"
+          />
+        </div>
+        <div>
+          <label>Card Alias:</label>
+          <input
+            type="text"
+            size="50"
+            class="bpmpi_cardalias"
+            value="cartaodoguilherme"
+          />
+        </div>
+        <div>
+          <label>Default:</label>
+          <input
+            type="text"
+            size="50"
+            class="bpmpi_default_card"
+            value="true"
+          />
+        </div>
+
+        <div>
+          <label>Installments:</label>
+          <input
+            type="text"
+            size="2"
+            name="installments"
+            class="bpmpi_installments"
+            value="1"
+          />
+        </div>
+      </div>
+      <!-- <div>
+        <label>Recurring End Date:</label>
+        <input
+          type="text"
+          size="50"
+          class="bpmpi_recurring_enddate"
+          value="2021-01-16"
+        />
+      </div>
+      <div>
+        <label>Recurring Frequency:</label>
+        <select class="bpmpi_recurring_frequency">
+          <option value="1">Monthly</option>
+          <option value="2">Bimonthly</option>
+          <option value="3">Quarterly</option>
+          <option value="4">FourMonths</option>
+          <option value="6">SemiAnnual</option>
+          <option value="12">Annual</option>
+        </select>
+      </div>
+      <div>
+        <label>Recurring Original Purchase Date:</label>
+        <input
+          type="text"
+          size="50"
+          class="bpmpi_recurring_originalpurchasedate"
+          value="2019-08-01T15:30:50"
+        />
+      </div>
+      -->
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    var env = getQueryString("env");
+
+    function bpmpi_config() {
+      return {
+        onReady: function () {
+          // Evento indicando quando a inicialização do script terminou.
+          document.getElementById("btnSendOrder").disabled = false;
+        },
+        onSuccess: function (e) {
+          console.log("#################### on Success", { e });
+
+          writeLog(
+            "SUCCESS: Cartão elegível para autenticação, e portador autenticou com sucesso"
+          );
+
+          // Cartão elegível para autenticação, e portador autenticou com sucesso.
+          var cavv = e.Cavv;
+          var xid = e.Xid;
+          var eci = e.Eci;
+          var version = e.Version;
+          var referenceId = e.ReferenceId;
+        },
+        onFailure: function (e) {
+          console.log("#################### onFailure", { e });
+
+          writeLog(
+            "FAILURE: Cartão elegível para autenticação, porém o portador finalizou com falha."
+          );
+
+          // Cartão elegível para autenticação, porém o portador finalizou com falha.
+          var xid = e.Xid;
+          var eci = e.Eci;
+          var version = e.Version;
+          var referenceId = e.ReferenceId;
+        },
+        onUnenrolled: function (e) {
+          console.log("#################### onUnenrolled", { e });
+
+          writeLog(
+            "UNENROLLED: Cartão não elegível para autenticação (não autenticável)"
+          );
+
+          // Cartão não elegível para autenticação (não autenticável).
+          var xid = e.Xid;
+          var eci = e.Eci;
+          var version = e.Version;
+          var referenceId = e.ReferenceId;
+        },
+        onDisabled: function () {
+          // Loja não requer autenticação do portador (classe "bpmpi_auth" false -> autenticação desabilitada).
+        },
+        onError: function (e) {
+          console.log("#################### onError", { e });
+
+          writeLog("ERROR: Erro no processo de autenticação");
+
+          // Erro no processo de autenticação.
+          var xid = e.Xid;
+          var eci = e.Eci;
+          var returnCode = e.ReturnCode;
+          var returnMessage = e.ReturnMessage;
+          var referenceId = e.ReferenceId;
+        },
+        onUnsupportedBrand: function (e) {
+          console.log("#################### onUnsupportedBrand", { e });
+
+          // Bandeira não suportada para autenticação.
+          var returnCode = e.ReturnCode;
+          var returnMessage = e.ReturnMessage;
+        },
+        Environment: env ? env : "SDB",
+        Debug: true,
+      };
+    }
+
+    function getQueryString(field) {
+      var href = window.location.href;
+      var reg = new RegExp("[?&]" + field + "=([^&#]*)", "i");
+      var string = reg.exec(href);
+      return string ? string[1] : null;
+    }
+  </script>
+  <script
+    src="https://mpisandbox.braspag.com.br/Scripts/BP.Mpi.3ds20.min.js"
+    type="text/javascript"
+  ></script>
+</html>

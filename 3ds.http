@@ -1,0 +1,10 @@
+### Get the access token
+POST https://mpisandbox.braspag.com.br/v2/auth/token
+Content-Type: application/json
+Authorization: Basic ZGJhM2E4ZGItZmE1NC00MGUwLThiYWItN2JmYjliNmYyZTJlOkQvaWxSc2ZvcUhsU1VDaHdBTW5seUtkRE5kN0ZNc003Y1Uvdm8wMlJFYWc9
+
+{
+     "EstablishmentCode":"1006993069",
+     "MerchantName": "Loja Exemplo Ltda",
+     "MCC": "5912"
+}
